@@ -7,7 +7,7 @@
   <ion-content class="ion-padding">
     <div class="Page-editar">
       <ion-menu-toggle>
-      <ion-button id="addAlimento" (click)="btn_mudaAdionarAlimento_t()">Adicionar Alimentos</ion-button>
+      <ion-button id="addAlimento" (click)="setOpen(true)">Adicionar Alimentos</ion-button>
       <ion-button id="addCategoria">Adicionar categoria</ion-button>
       <ion-button id="alterarAlimento">Alterar Alimentos</ion-button>
       <ion-button id="alterarCategoria">Alterar Categoria</ion-button>
@@ -29,15 +29,42 @@
     </ion-title>
   </ion-toolbar>
 </ion-header>
-<script>
-  /*var p = document.createElement("Teste com document.createElement");
-  var t = document.createTextNode("Outro Texto com createTextNode")
-  function inicia(){
-    p.appendChild(t);
-    document.ion-list.appendChild(p);
-  }
-  window.addEventListener("load", inicia);*/
-</script>
+<ion-modal [isOpen]="isModalOpen">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Modal</ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="setOpen(false)">Close</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding"> <!--Aqui jaz o conteúdo-->
+      <div id="Adicionar-alimento">
+        <ion-item class="produto">
+            <ion-thumbnail slot="start">
+              <img src="https://www.promoview.com.br/uploads/2017/04/b72a1cfe.png"/>
+            </ion-thumbnail>
+          <div class="nome_descricao">
+              <ion-item>
+                <ion-label class="item">Nome do Produto: </ion-label>
+                <ion-input placeholder="digite aqui o nome do produto"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label>Descriçao do produto: </ion-label>
+                <ion-input placeholder="digite aqui a descrição do produto"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label class="price">Preço: </ion-label>
+                <ion-input type="number" placeholder="00.00"></ion-input>
+              </ion-item>
+              <ion-item><ion-button style="margin-right: 5px;">Salvar</ion-button><ion-button (click)="setOpen(false)">Cancelar</ion-button></ion-item>
+          </div>
+        </ion-item>
+      </div>
+    </ion-content><!--Aqui jaz o fim do conteúdo-->
+  </ng-template>
+</ion-modal>
 <ion-content [fullscreen]="true">
   <ion-list class="itens-cardapio" id="Lista-Alimentos-tudo">
     <ion-item class="produto" *ngFor="let ali of listaAlimentos">
@@ -47,28 +74,6 @@
       <ion-label class="item"><h1>{{ali.nome}}</h1><p>{{ali.descricao}}</p></ion-label>
       <ion-label><h1 class="price">R${{ali.preco}}</h1></ion-label>
     </ion-item>
-    <div id="Adicionar-alimento" *ngIf="falseAdicionarAlimento">
-      <ion-item class="produto">
-        <ion-thumbnail slot="start">
-          <img src="https://www.promoview.com.br/uploads/2017/04/b72a1cfe.png"/>
-        </ion-thumbnail>
-        <div class="nome_descricao">
-            <ion-item>
-              <ion-label class="item">Nome do Produto: </ion-label>
-              <ion-input placeholder="digite aqui o nome do produto"></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-label>Descriçao do produto: </ion-label>
-              <ion-input placeholder="digite aqui a descrição do produto"></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-label class="price">Preço: </ion-label>
-              <ion-input type="number" placeholder="00.00"></ion-input>
-            </ion-item>
-            <ion-item><ion-button style="margin-right: 5px;">Salvar</ion-button><ion-button (click)="btn_mudaAdionarAlimento_f()">Cancelar</ion-button></ion-item>
-        </div>
-      </ion-item>
-    </div>
   </ion-list>
   <div class="Vazio" *ngIf="false_listaAlimentos">
     <h1>Vazio</h1>

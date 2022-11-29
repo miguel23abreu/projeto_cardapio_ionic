@@ -47,20 +47,10 @@ export class Tab1Page{
   ];
 
 
-  /*var btn = document.querySelector('#addAlimento');
-  var adicionar_Alimento = document.querySelector('.adicionar_Alimento');
+  isModalOpen = false;
 
-  esconderElemento();{
-
-    btn.addEventListener('click', function(){
-      if(adicionar_Alimento.style.display !== 'none'){
-        adicionar_Alimento.style.display = 'none';
-      }
-      else{
-        adicionar_Alimento.style.display = 'flex'
-      }
-    });
-  }*/
-  //let alimentos = [nome, descricao, preco]
+  setOpen(isOpen: boolean) {
+    this.isModalOpen = isOpen;
+  }
 
 }
