@@ -1,0 +1,34 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="titulo-header">
+      Perfil
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-item>
+    <div style="margin: auto;">
+      <ion-card class="header-perfil">
+        <div>
+          <img class="foto-perfil"
+            src="https://www.promoview.com.br/uploads/2017/04/b72a1cfe.png"/>
+        </div>
+        <div>
+          <ion-card-title style="margin: 20px;">Nome do Restaurante</ion-card-title>
+          <ion-card-subtitle style="margin: 20px;">Avenida maria de nazare brito de souza, 1744</ion-card-subtitle>
+        </div>
+      </ion-card>
+    </div>
+  </ion-item>
+  <ion-item>
+    <div class="op-perfil">
+      <ion-button id="open-modal-seusDados" expand="block">Seus dados</ion-button>
+      <ion-modal id="open-modal-SeusDasos">
+
+      </ion-modal>
+      <ion-button>Login</ion-button>
+      <ion-button>Editar perfil</ion-button>
+    </div>
+  </ion-item>
+</ion-content>

@@ -1,0 +1,82 @@
+<ion-menu contentId="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Editar Cardapio</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <div class="Page-editar">
+      <ion-menu-toggle>
+      <ion-button id="addAlimento" (click)="setOpen(true)">Adicionar Alimentos</ion-button>
+      <ion-button id="addCategoria">Adicionar categoria</ion-button>
+      <ion-button id="alterarAlimento">Alterar Alimentos</ion-button>
+      <ion-button id="alterarCategoria">Alterar Categoria</ion-button>
+      <ion-button id="excluirAlimentp">Excluir Alimentos</ion-button>
+      <ion-button id="excluirCategoria">Excluir Categoria</ion-button>
+      <ion-button>Lançar na Web</ion-button>
+    </ion-menu-toggle>
+    </div>
+  </ion-content>
+</ion-menu>
+<div id="main-content">
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="titulo-header">
+      Tudo
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-modal [isOpen]="isModalOpen">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Modal</ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="setOpen(false)">Close</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding"> <!--Aqui jaz o conteúdo-->
+      <div id="Adicionar-alimento">
+        <ion-item class="produto">
+            <ion-thumbnail slot="start">
+              <img src="https://www.promoview.com.br/uploads/2017/04/b72a1cfe.png"/>
+            </ion-thumbnail>
+          <div class="nome_descricao">
+              <ion-item>
+                <ion-label class="item">Nome do Produto: </ion-label>
+                <ion-input placeholder="digite aqui o nome do produto" name="Nome do produto" [(ngModel)]="nome_produto"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label>Descriçao do produto: </ion-label>
+                <ion-input placeholder="digite aqui a descrição do produto" name="descricao do produto" [(ngModel)]="descricao_produto"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label class="price">Preço: </ion-label>
+                <ion-input type="number" placeholder="00.00" name="preço do produto" [(ngModel)]="preco_produto"></ion-input>
+              </ion-item>
+              <ion-item><ion-button style="margin-right: 5px;" (click)="salvarProduto()">Salvar</ion-button><ion-button (click)="setOpen(false)">Cancelar</ion-button></ion-item>
+          </div>
+        </ion-item>
+      </div>
+    </ion-content><!--Aqui jaz o fim do conteúdo-->
+  </ng-template>
+</ion-modal>
+<ion-content [fullscreen]="true">
+  <ion-list class="itens-cardapio" id="Lista-Alimentos-tudo">
+    <ion-item class="produto" *ngFor="let ali of listaAlimentos">
+      <ion-thumbnail slot="start">
+        <img [src]="ali.imagem"/>
+      </ion-thumbnail>
+      <ion-label class="item"><h1>{{ali.nome}}</h1><p>{{ali.descricao}}</p></ion-label>
+      <ion-label><h1 class="price">R${{ali.preco}}</h1></ion-label>
+    </ion-item>
+  </ion-list>
+  <div class="Vazio" *ngIf="false_listaAlimentos">
+    <h1>Vazio</h1>
+  </div>
+</ion-content>
+</div>
